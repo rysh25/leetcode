@@ -1,0 +1,22 @@
+{
+    // pythonの環境設定
+    "python.defaultInterpreterPath": "venv/bin/python",
+    "files.watcherExclude": {
+        "**/venv/**": true
+    },
+
+    // リンタの設定
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.linting.lintOnSave": true,
+    // フォーマッタの設定
+    "python.formatting.provider": "black",
+    "editor.formatOnSave": false,
+    "[python]": {
+        "editor.formatOnSave": true
+    },
+    "editor.formatOnPaste": false,
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": true
+    }
+}
