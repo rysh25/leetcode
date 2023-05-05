@@ -1,22 +1,27 @@
 {
-    // pythonの環境設定
-    "python.defaultInterpreterPath": "venv/bin/python",
-    "files.watcherExclude": {
-        "**/venv/**": true
-    },
+  // python
+  "python.defaultInterpreterPath": "venv/bin/python",
+  "files.watcherExclude": {
+      "**/venv/**": true
+  },
 
-    // リンタの設定
-    "python.linting.pylintEnabled": false,
-    "python.linting.flake8Enabled": true,
-    "python.linting.lintOnSave": true,
-    // フォーマッタの設定
-    "python.formatting.provider": "black",
-    "editor.formatOnSave": false,
-    "[python]": {
-        "editor.formatOnSave": true
-    },
-    "editor.formatOnPaste": false,
-    "editor.codeActionsOnSave": {
-        "source.organizeImports": true
-    }
+  "python.linting.pylintEnabled": false,
+  "python.linting.flake8Enabled": true,
+  "python.linting.lintOnSave": true,
+
+
+  "editor.formatOnSave": false,
+  "[python]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+  "editor.formatOnPaste": false,
+  "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+  },
+  "python.analysis.typeCheckingMode": "strict",
+
+  "github.copilot.enable": {
+    "*": false
+  }
 }
