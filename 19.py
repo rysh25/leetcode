@@ -10,37 +10,28 @@ class ListNode:
 
 class Solution:
     def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
-        curr = head
-        count = 0
-        while curr:
-            curr = curr.next
-            count += 1
+        fast, slow = head, head
+        if not head:
+            return head
 
-        # print(f"count={count}")
+        for _ in range(n):
+            if not fast:
+                raise Exception()
+            fast = fast.next
 
-        next: Optional[ListNode] = None
-        curr = head
-        i = 0
-        while curr:
-            # print(f"count - n + 1={count - n + 1}, i={i}")
-            if count - n + 1 == i:
-                # print(f"next={i}")
-                next = curr
-            curr = curr.next
-            i += 1
+        if not fast:
+            return head.next
 
-        # print(f"next={next}")
+        while fast.next:
+            if not slow:
+                raise Exception()
 
-        if count - n - 1 < 0:
-            head = next
-        else:
-            curr = head
-            i = 0
-            while curr:
-                if count - n - 1 == i:
-                    curr.next = next
-                curr = curr.next
-                i += 1
+            fast, slow = fast.next, slow.next
+
+        if not slow or not slow.next:
+            raise Exception()
+
+        slow.next = slow.next.next
 
         return head
 
