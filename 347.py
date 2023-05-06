@@ -5,6 +5,16 @@ from typing import DefaultDict, List, Tuple
 
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        """
+        ディクショナリーを使って、各数字の出現回数を計算する
+        優先度付きキューに出現回数をプッシュする
+        優先度付きキューから、多い順に先頭k個取り出して、リストに追加する
+        リストを返す
+
+        Time complexity: O(n log n + k long n)
+        Space complexity: O(n)
+        """
+
         d: DefaultDict[int, int] = defaultdict(int)
         for num in nums:
             d[num] += 1
