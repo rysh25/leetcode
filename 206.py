@@ -10,12 +10,31 @@ class ListNode:
 
 class Solution:
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        """
+            curr に head を入れる
+            prev に None を入れる
+            curr が存在する間ループする:
+                tmp に curr を入れる
+                curr を進める
+                tmp.next に prev を入れる
+                prev に curr を入れる
+
+                これにより、今回処理したノードが一つ前を見る様になる
+
+            prev を返す
+
+            Time complexity: O(N)
+            Space complexity: O(1)
+        """
+
         curr: Optional[ListNode] = head
         prev: Optional[ListNode] = None
         while curr:
-            print(curr.val)
-            prev = ListNode(curr.val, prev)
+            # print(curr.val)
+            tmp = curr
             curr = curr.next
+            tmp.next = prev
+            prev = tmp
 
         return prev
 

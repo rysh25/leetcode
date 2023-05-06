@@ -10,6 +10,21 @@ class ListNode:
 
 class Solution:
     def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
+        """
+        fast、slow ポインターを用意する
+        fast ポインターを n 進める
+        fast が空なら n = リストの長さのため、head.next を返す。(1つ目を消す)
+
+        fast.next が存在する間ループする:
+          fast と slow を進める
+
+        slow が削除対象の一つ前を指している
+        slow.next に slow.next.next を入れる
+
+        Time complexity: O(N)
+        Space complexity: O(N)
+        """
+
         fast, slow = head, head
         if not head:
             return head
