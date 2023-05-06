@@ -14,7 +14,7 @@ class Solution:
             curr に head を入れる
             prev に None を入れる
             curr が存在する間ループする:
-                tmp に curr を入れる
+                curr を tmp に退避させる
                 curr を進める
                 tmp.next に prev を入れる
                 prev に curr を入れる

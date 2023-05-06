@@ -12,6 +12,22 @@ class Solution:
     def mergeTwoLists(
         self, list1: Optional[ListNode], list2: Optional[ListNode]
     ) -> Optional[ListNode]:
+        """
+            list1、list2 どちらからも始められるように、ダミーノードを用意する
+            curr にダミーノードを入れる
+
+            list1 と list2 が存在する間ループする:
+                list1.val < list2.val:
+                    curr の next を list1 にして、list1 を進める
+                そうでなければ、curr の next を list2 にして、list2 を進める
+                curr を進める
+
+            ダミーの next を返す
+
+            Time complexity: O(N)
+            Space complexity: O(1)
+        """
+
         dummy = ListNode()
         curr = dummy
 
