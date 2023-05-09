@@ -2,6 +2,12 @@ from typing import List
 
 
 class MinStack:
+    """
+    最小値を管理するスタッククラスです。
+
+    #Stack
+    """
+
     def __init__(self):
         self.s: List[int] = []
         self.min_s: List[int] = []

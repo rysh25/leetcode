@@ -4,7 +4,7 @@ from typing import Set
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         """
-        Sliding Window で文字の重複のない最長文字数を数えます。
+        尺取り法 (Sliding Window) で文字の重複の無い最長文字数を数えます。
 
         文字列を読み進めるための left, right の変数を0で初期化します。
         最長文字数を管理するための変数を用意します。
@@ -20,6 +20,8 @@ class Solution:
 
         Time complexity: O(N)
         Space complexity: O(N)
+
+        #SlidingWindow
         """
 
         left = 0

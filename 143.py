@@ -15,7 +15,7 @@ def print_linked_list(name: str, head: Optional[ListNode]):
         return
     curr = head
     while curr:
-        print(curr.val, end=', ')
+        print(curr.val, end=", ")
         curr = curr.next
     print()
 
@@ -52,6 +52,8 @@ class Solution:
 
         Time complexity: O(N)
         Space complexity: O(1)
+
+        #LinkedList
         """
 
         if not head:

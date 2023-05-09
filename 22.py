@@ -6,7 +6,7 @@ class Solution:
         """
         n に指定された数値の適正な括弧のペアの組み合わせを全て作成して返します。
 
-        DFS 的に全てを再帰で辿っていきます。
+        DFS 的に再帰で全てを辿っていきます。
         各深さごとに、「(」と「)」の2股に分かれますが、「(」は、開いた数が n に
         到達するまで、「)」は、開いた数が、閉じた数より大きときのみ辿る様にします。
 
@@ -18,6 +18,8 @@ class Solution:
 
         Time complexity: O(2^n)
         Space complexity: O(n)
+
+        #Stack
         """
 
         stack: List[str] = []

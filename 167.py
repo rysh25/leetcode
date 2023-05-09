@@ -26,6 +26,20 @@ class Solution_bs:
 
 class Solution:
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        """
+        昇順で並べられた整数の配列の中から、足すと target に指定された数値になる
+        ペアを尺取り法 (Two Pointers) で検索し、インデックスを返す。
+
+        配列の右と左から同時に処理を始める。
+        足した値が target と同じなら結果を返す。
+        target より大きければ右側を一つ前にずらす。
+        target より小さければ左側を一つ進める。
+
+        Time complexity: O(N)
+        Space complexity: O(1)
+
+        #TwoPointers
+        """
         left = 0
         right = len(numbers) - 1
         while left < right:

@@ -3,14 +3,16 @@ from typing import Dict, Optional
 
 # Definition for a Node.
 class Node:
-    def __init__(self, x: int, next: Optional["Node"] = None, random: Optional["Node"] = None):
+    def __init__(
+        self, x: int, next: Optional["Node"] = None, random: Optional["Node"] = None
+    ):
         self.val = int(x)
         self.next = next
         self.random = random
 
 
 class Solution:
-    def copyRandomList(self, head: Optional["Node"]) -> 'Optional[Node]':
+    def copyRandomList(self, head: Optional["Node"]) -> "Optional[Node]":
         """
         1度目のループで、ノードと値をコピーしながら、コピー元と、コピー先の対応付け行う辞書を作る。
         2度目のループで、コピー元の、next と random をキーに、対応付辞書から、コピー先のノードを取得し、
@@ -23,6 +25,8 @@ class Solution:
 
         Time complexity: O(N)
         Space complexity: O(N)
+
+        #LinkedList
         """
         oldToCopy: Dict["Node", "Node"] = {}
         if not head:
@@ -44,6 +48,3 @@ class Solution:
             curr = curr.next
 
         return oldToCopy[head] if head else None
-
-
-

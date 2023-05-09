@@ -6,7 +6,7 @@ class Solution:
         """
         日毎の気温を記録した配列 temperatures を受け取る。
         各日から気温が高くなるまでを記録する ans 配列を0で初期化する
-        気温の低下 (Monotonic Descendingx` Stack) を管理するスタックを用意する。
+        気温の低下 (Monotonic Descendingx Stack) を管理するスタックを用意する。
 
         temperatures 配列を初日から順にループする:
             スタックの最新の気温より高ければ、順番にポップしながらループする:
@@ -21,6 +21,8 @@ class Solution:
 
         Time complexity: O(N)
         Space complexity: O(N)
+
+        #Stack #MonotonicStack
         """
 
         ans: List[int] = [0] * len(temperatures)

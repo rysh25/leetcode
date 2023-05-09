@@ -23,6 +23,8 @@ class Solution:
 
         Time complexity: O(N)
         Space complexity: O(N)
+
+        #LinkedList
         """
 
         fast, slow = head, head
