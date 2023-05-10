@@ -22,7 +22,7 @@ class Solution:
         #MonotonicStack
 
         Args:
-            temperatures (List[int]): 各日の気温からなるの整数配列を渡します。
+            temperatures (list[int]): 各日の気温からなるの整数配列を渡します。
 
         Returns:
             list[int]: temperatures の各日を基準に次に気温が高くなる日までの日数の配列を返します。
