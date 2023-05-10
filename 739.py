@@ -1,32 +1,35 @@
-from typing import List, Tuple
-
-
 class Solution:
-    def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
+    def dailyTemperatures(self, temperatures: list[int]) -> list[int]:
         """
-        日毎の気温を記録した配列 temperatures を受け取る。
+        各日の気温からなるの整数配列を元に、各日を基準に次に気温が高くなる日までの日数の
+        配列を生成して返します。
+
         各日から気温が高くなるまでを記録する ans 配列を0で初期化する
-        気温の低下 (Monotonic Descendingx Stack) を管理するスタックを用意する。
+        単調減少スタック (Monotonic Decreasing Stack) を用意します。
 
-        temperatures 配列を初日から順にループする:
-            スタックの最新の気温より高ければ、順番にポップしながらループする:
-                ポップした日付の ans のインデックスに現在日付との差を記録する
-                (気温が高くなるまでの日数を記録)
-            スタックに現在の日付の気温をプッシュする
-        ans 配列を返却する
+        単調スタック (Monotonic Stack) とは、下から小さな値スタックで、
+        これを使うと、後の最も近いの大きな要素 (Nearest Greater to Right) を
+        高速に見つけることができます。
 
-        単調スタック (Monotonic Stack) とは、
-        ある要素A[i]の値よりも前(j<i)にあるより小さい最初の値 (降順の場合大きい値)
-        A[j] を効率的に見つけるために利用するスタックのこと
+        見つけた NGR の日付の差分を ans 配列の対応する要素に設定します。
+
+        ans を返します。
 
         Time complexity: O(N)
         Space complexity: O(N)
 
-        #Stack #MonotonicStack
+        #Stack
+        #MonotonicStack
+
+        Args:
+            temperatures (List[int]): 各日の気温からなるの整数配列を渡します。
+
+        Returns:
+            list[int]: temperatures の各日を基準に次に気温が高くなる日までの日数の配列を返します。
         """
 
-        ans: List[int] = [0] * len(temperatures)
-        stack: List[Tuple[int, int]] = []  # (temprature, index)
+        ans: list[int] = [0] * len(temperatures)
+        stack: list[tuple[int, int]] = []  # (temprature, index)
 
         for i, temp in enumerate(temperatures):
             while stack and temp > stack[-1][0]:
