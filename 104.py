@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from queue import Queue
+from collections import deque
 
 
 # Definition for a binary tree node.
@@ -22,21 +22,21 @@ def createTree(list: list[int | None]):
 
     root = TreeNode(list[0])
     parent = root
-    q: Queue[TreeNode] = Queue()
-    q.put(root)
+    q: deque[TreeNode] = deque()
+    q.append(root)
     i = 1
-    while not q.empty():
-        parent = q.get()
+    while len(q):
+        parent = q.popleft()
         if i < len(list):
             node = TreeNode(list[i])
             # print(f"list[{i}]={list[i]}")
-            q.put(node)
+            q.append(node)
             parent.left = node
         i += 1
         if i < len(list):
             node = TreeNode(list[i])
             # print(f"list[{i}]={list[i]}")
-            q.put(node)
+            q.append(node)
             parent.right = node
         i += 1
 
@@ -48,22 +48,62 @@ def printTree(name: str, root: TreeNode | None):
         return
 
     print(f"{name}: ", end="")
-    q: Queue[TreeNode] = Queue()
-    q.put(root)
+    q: deque[TreeNode] = deque()
+    q.append(root)
     # print(f"push: root={root.val}")
 
-    while not q.empty():
-        curr = q.get()
+    while len(q):
+        curr = q.popleft()
         print(curr.val, end=", ")
 
         if curr.left:
             # print(f"push: curr.left={curr.left.val}")
-            q.put(curr.left)
+            q.append(curr.left)
         if curr.right:
             # print(f"push: curr.right={curr.right.val}")
-            q.put(curr.right)
+            q.append(curr.right)
 
     print()
+
+
+class Solution_BFS:
+    def maxDepth(self, root: TreeNode | None) -> int:
+        """与えられたツリーの深さを数えて返します。
+
+        BFS で深さを数えます。
+
+        Time complexity: O(n)
+        Space complexity: O(h) (height of the tree)
+
+        #Tree
+        #BinaryTree
+        #TreeTraversal
+        #BFS
+
+        Args:
+            root (TreeNode | None): 深さを数えるツリーを指定します。
+
+        Returns:
+            int: 深さを返します。
+        """
+
+        if not root:
+            return 0
+
+        q: deque[TreeNode] = deque()  # (TreeNode, depth)
+        q.append(root)
+
+        level = 0
+        while len(q):
+            for _ in range(len(q)):
+                curr = q.popleft()
+                if curr.left:
+                    q.append(curr.left)
+                if curr.right:
+                    q.append(curr.right)
+            level += 1
+
+        return level
 
 
 class Solution:
@@ -77,6 +117,8 @@ class Solution:
 
         #Tree
         #BinaryTree
+        #TreeTraversal
+        #BFS
 
         Args:
             root (TreeNode | None): 深さを数えるツリーを指定します。
