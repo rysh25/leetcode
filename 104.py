@@ -106,6 +106,46 @@ class Solution_BFS:
         return level
 
 
+class Solution_IDFS:
+    def maxDepth(self, root: TreeNode | None) -> int:
+        """与えられたツリーの深さを数えて返します。
+
+        Iterative DFS で深さを数えます。
+
+        Time complexity: O(n)
+        Space complexity: O(h) (height of the tree)
+
+        #Tree
+        #BinaryTree
+        #TreeTraversal
+        #DFS
+
+        Args:
+            root (TreeNode | None): 深さを数えるツリーを指定します。
+
+        Returns:
+            int: 深さを返します。
+        """
+        if not root:
+            return 0
+
+        stack: list[tuple[TreeNode, int]] = []  # (TreeNode, depth)
+        stack.append((root, 1))
+
+        max_depth = 0
+        while stack:
+            node, depth = stack.pop()
+
+            max_depth = max(max_depth, depth)
+
+            if node.left:
+                stack.append((node.left, depth + 1))
+            if node.right:
+                stack.append((node.right, depth + 1))
+
+        return max_depth
+
+
 class Solution:
     def maxDepth(self, root: TreeNode | None) -> int:
         """与えられたツリーの深さを数えて返します。
@@ -118,7 +158,7 @@ class Solution:
         #Tree
         #BinaryTree
         #TreeTraversal
-        #BFS
+        #DFS
 
         Args:
             root (TreeNode | None): 深さを数えるツリーを指定します。
@@ -133,7 +173,7 @@ class Solution:
         return max(self.maxDepth(root.left), self.maxDepth(root.right)) + 1
 
 
-sol = Solution()
+sol = Solution_IDFS()
 root = createTree(list=[3, 9, 20, None, None, 15, 7])
 printTree("root", root)
 print(sol.maxDepth(root))
