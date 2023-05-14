@@ -8,7 +8,7 @@ class TreeNode:
     def __init__(
         self,
         val: int | None = 0,
-        left: TreeNode | None | None = None,
+        left: TreeNode | None = None,
         right: TreeNode | None = None,
     ):
         self.val = val
