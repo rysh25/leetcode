@@ -27,13 +27,13 @@ def create_tree(list: list[int | None]):
     i = 1
     while len(q):
         parent = q.popleft()
-        if i < len(list) and list[i]:
+        if i < len(list) and list[i] is not None:
             node = TreeNode(list[i])
             # print(f"list[{i}]={list[i]}")
             q.append(node)
             parent.left = node
         i += 1
-        if i < len(list) and list[i]:
+        if i < len(list) and list[i] is not None:
             node = TreeNode(list[i])
             # print(f"list[{i}]={list[i]}")
             q.append(node)
