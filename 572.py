@@ -87,8 +87,10 @@ class Solution:
 
         BFS で root のすべてのノードを回りながら、DFS で サブツリーが一致するかを調べます。
 
-        Time complexity: O(n^2)
-        Space complexity: O(n)
+        - Time complexity: O(mn)
+        - Space complexity: O(m+n)
+
+        m は root ツリーのノード数、n は subRoot ツリーのノード数です。
 
         #Tree
         #BinaryTree

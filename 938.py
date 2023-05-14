@@ -76,8 +76,10 @@ class Solution_BFS:
 
         BFS ですべてのノードを訪問し、指定の範囲内であれば、値を合計値に足します。
 
-        Time complexity: O(n)
-        Space complexity: O(n)
+        - Time complexity: O(n)
+        - Space complexity: O(n)
+
+        n は二分探索木のノード数を表します。
 
         #Tree
         #BinaryTree
@@ -127,8 +129,10 @@ class Solution:
         DFS ですべてのノードを訪問し、指定の範囲内であれば、値を合計値に足します。
         ただし、BST であるため low より小さい値の左と、hight より大きい値の右は訪問しないものとします。
 
-        Time complexity: O(n)
-        Space complexity: O(n)
+        - Time complexity: O(n)
+        - Space complexity: O(h)
+
+        n は二分探索木のノード数、h は二分探索木の高さを表します。
 
         #Tree
         #BinaryTree
