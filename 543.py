@@ -16,7 +16,7 @@ class TreeNode:
         self.right = right
 
 
-def createTree(list: list[int | None]):
+def create_tree(list: list[int | None]):
     if not list:
         return
 
@@ -27,13 +27,13 @@ def createTree(list: list[int | None]):
     i = 1
     while len(q):
         parent = q.popleft()
-        if i < len(list):
+        if i < len(list) and list[i]:
             node = TreeNode(list[i])
             # print(f"list[{i}]={list[i]}")
             q.append(node)
             parent.left = node
         i += 1
-        if i < len(list):
+        if i < len(list) and list[i]:
             node = TreeNode(list[i])
             # print(f"list[{i}]={list[i]}")
             q.append(node)
@@ -43,11 +43,13 @@ def createTree(list: list[int | None]):
     return root
 
 
-def printTree(name: str, root: TreeNode | None):
+def print_tree(name: str, root: TreeNode | None):
+    print(f"{name}: ", end="")
+
     if not root:
+        print()
         return
 
-    print(f"{name}: ", end="")
     q: deque[TreeNode] = deque()
     q.append(root)
     # print(f"push: root={root.val}")
@@ -107,11 +109,11 @@ class Solution:
 
 
 sol = Solution()
-root = createTree(list=[1, 2, 3, 4, 5])
-printTree("root", root)
+root = create_tree(list=[1, 2, 3, 4, 5])
+print_tree("root", root)
 print(sol.diameterOfBinaryTree(root))
 
 
-root = createTree(list=[1, 2])
-printTree("root", root)
+root = create_tree(list=[1, 2])
+print_tree("root", root)
 print(sol.diameterOfBinaryTree(root))

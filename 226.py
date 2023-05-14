@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from queue import Queue
+from collections import deque
 
 
 # Definition for a binary tree node.
@@ -16,52 +16,54 @@ class TreeNode:
         self.right = right
 
 
-def createTree(list: list[int | None]):
+def create_tree(list: list[int | None]):
     if not list:
         return
 
     root = TreeNode(list[0])
     parent = root
-    q: Queue[TreeNode] = Queue()
-    q.put(root)
+    q: deque[TreeNode] = deque()
+    q.append(root)
     i = 1
-    while not q.empty():
-        parent = q.get()
-        if i < len(list):
+    while len(q):
+        parent = q.popleft()
+        if i < len(list) and list[i]:
             node = TreeNode(list[i])
             # print(f"list[{i}]={list[i]}")
-            q.put(node)
+            q.append(node)
             parent.left = node
         i += 1
-        if i < len(list):
+        if i < len(list) and list[i]:
             node = TreeNode(list[i])
             # print(f"list[{i}]={list[i]}")
-            q.put(node)
+            q.append(node)
             parent.right = node
         i += 1
 
     return root
 
 
-def printTree(name: str, root: TreeNode | None):
+def print_tree(name: str, root: TreeNode | None):
+    print(f"{name}: ", end="")
+
     if not root:
+        print()
         return
 
-    print(f"{name}: ", end="")
-    q: Queue[TreeNode] = Queue()
-    q.put(root)
+    q: deque[TreeNode] = deque()
+    q.append(root)
     # print(f"push: root={root.val}")
 
-    while not q.empty():
-        curr = q.get()
+    while len(q):
+        curr = q.popleft()
         print(curr.val, end=", ")
 
         if curr.left:
             # print(f"push: curr.left={curr.left.val}")
-            q.put(curr.left)
+            q.append(curr.left)
         if curr.right:
             # print(f"push: curr.right={curr.right.val}")
-            q.put(curr.right)
+            q.append(curr.right)
 
     print()
 
@@ -105,7 +107,7 @@ class Solution:
 
 
 sol = Solution()
-root = createTree(list=[4, 2, 7, 1, 3, 6, 9])
-printTree("root", root)
+root = create_tree(list=[4, 2, 7, 1, 3, 6, 9])
+print_tree("root", root)
 ret = sol.invertTree(root)
-printTree("ret", ret)
+print_tree("ret", ret)
