@@ -19,13 +19,13 @@
   "editor.codeActionsOnSave": {
       "source.organizeImports": true
   },
-  "python.linting.flake8Args": [
-    "--max-line-length=120"
-  ],
 
   "python.analysis.typeCheckingMode": "strict",
 
   "github.copilot.enable": {
     "*": false
-  }
+  },
+  "flake8.args": [
+      "--config=${workspaceFolder}/.flake8"
+  ],
 }

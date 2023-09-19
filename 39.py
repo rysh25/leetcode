@@ -22,9 +22,10 @@ class Solution:
 
         ans: list[list[int]] = []
 
-        print(f"candidates={candidates}, target={target}")
+        # print(f"candidates={candidates}, target={target}")
 
         def backtrack(i: int, cur: list[int], total: int):
+            # print(f"backtrack: i={i}, cur={cur}, total={total}")
             if i >= len(candidates) or total > target:
                 return
             elif total == target:

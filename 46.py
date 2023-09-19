@@ -1,3 +1,6 @@
+from itertools import permutations
+
+
 class Solution_bk:
     def permute(self, nums: list[int]) -> list[list[int]]:
         """
@@ -35,6 +38,33 @@ class Solution_bk:
                 curr.pop()
 
         backtrack(0, nums[:], [])
+
+        return ans
+
+
+class Solution_it:
+    def permute(self, nums: list[int]) -> list[list[int]]:
+        """
+        個別の整数からなるの整数配列が指定されます。
+        すべての順列を返します。
+
+        Time complexity: O(n!)
+        Space complexity: O(n*n!)
+
+        n は nums リストの長さです。
+
+        #BackTracking
+
+        Args:
+            nums (list[int]): 個別の整数からなるの整数配列を指定します。
+
+        Returns:
+            list[list[int]]: 指定された整数配列の順列のリストを返します。
+        """
+        ans: list[list[int]] = []
+
+        for perm in permutations(nums):
+            ans.append(list(perm))
 
         return ans
 
