@@ -7,16 +7,14 @@ class Solution:
         はじめに候補配列をソートします。
         バックトラックで再帰的に組み合わせを作成します。
         組み合わせの合計がターゲットと同じなら、結果の配列にその組み合わせを追加します。
-        結果の配列には、重複する組み合わせを許さないため追加するタイミングで重複の確認を
-        しようとすると
+
+        結果の配列には、重複する組み合わせを許さない。
+        追加するタイミングで重複の確認をしようとすとそこで、O(n) の計算量が必要になるため、
+        事前に、ソートを行いあらかじめ重複する数値の候補を除外するようにしている。
 
 
-        組み合わせは一意である必要があるため、一度使った数値はその数値から始まる組み合わせを
-        作成しないようにします。
-
-
-        Time complexity: O(n*2^n)
-        Space complexity: O(n*2^n)
+        Time complexity: O(2^n)
+        Space complexity: O(n)
 
         Args:
             candidates (list[int]): 候補の数値の配列を指定します。
@@ -53,5 +51,6 @@ class Solution:
 
 
 sol = Solution()
-print(sol.combinationSum2(candidates=[10, 1, 2, 7, 6, 1, 5], target=8))
-print(sol.combinationSum2(candidates=[2, 5, 2, 1, 2], target=5))
+# print(sol.combinationSum2(candidates=[10, 1, 2, 7, 6, 1, 5], target=8))
+# print(sol.combinationSum2(candidates=[2, 5, 2, 1, 2], target=5))
+print(sol.combinationSum2(candidates=[1, 1, 7], target=8))

@@ -7,8 +7,8 @@ class Solution:
         candidate 内の数値は無制限に何度でも使うことができます。
         選択した数値の頻度が少なくとも1つ異なれば一意となります。
 
-        - Time complexity: O(n*n^2)
-        - Space complexity: O(n*n^2)
+        - Time complexity: O(2^n)
+        - Space complexity: O(n)
 
         #BackTracking
 

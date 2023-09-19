@@ -10,7 +10,7 @@ class Solution_bk:
         バックトラッキングで再帰的に順列のリストを作成します。
 
         Time complexity: O(n!)
-        Space complexity: O(n*n!)
+        Space complexity: O(n)
 
         n は nums リストの長さです。
 
@@ -49,7 +49,7 @@ class Solution_it:
         すべての順列を返します。
 
         Time complexity: O(n!)
-        Space complexity: O(n*n!)
+        Space complexity: O(n)
 
         n は nums リストの長さです。
 
@@ -78,7 +78,7 @@ class Solution:
         バックトラッキングで再帰的に順列のリストを作成します。
 
         Time complexity: O(n!)
-        Space complexity: O(n*n!)
+        Space complexity: O(n)
 
         n は nums リストの長さです。
 

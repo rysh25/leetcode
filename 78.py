@@ -7,7 +7,7 @@ class Solution:
         バックトラッキングで部分集合を作成します。
 
         - Time complexity: O(2^n)
-        - Space complexity: O(n*2^n)
+        - Space complexity: O(n)
 
         n は、nums の要素数を表します。
 
