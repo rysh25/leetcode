@@ -8,7 +8,9 @@ class Solution:
         回文であれば結果用のリストに追加します。
 
         - Time complexity: O(n * 2^n)
-        - Space complexity: O(n * 2^n)
+        - Space complexity: O(n)
+
+        #Backgrack
 
         Args:
             s (str): 文字列が渡されます。
