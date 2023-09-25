@@ -23,8 +23,8 @@ class Solution:
           おそらく、Python が id() 関数の値を元に、ハッシュキーを生成しているのだろう。
           C++ で、unordered_map のキーにポインターを利用できるのと同じか。
 
-        Time complexity: O(N)
-        Space complexity: O(N)
+        - Time complexity: O(N)
+        - Space complexity: O(N)
 
         #LinkedList
         """
