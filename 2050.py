@@ -17,6 +17,9 @@ class Solution:
         すべてのコースを完了するのに必要な最小月数を返す。
         テスト ケースは、すべてのコースを完了できるように生成される (つまり、グラフは有向非巡回グラフです)。
 
+        - Time complexity: O(n + len(relations))
+        - Space comlexity: O(n)
+
         #TopologicalSort
 
         Args:
