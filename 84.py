@@ -4,7 +4,7 @@ class Solution:
         渡されたヒストグラムのバーの高さの配列から、各バーの幅を1として、
         最大の面積を返します。
 
-        横の範囲の全パターンは、n^2 通り存在し、全通り試すと O(n^2) かかります。
+        横の範囲の全パターンは、n^2 通り存在し、全通り試すと O(n^2) かかる。
         面積というのは、ある横の範囲の面積は、幅掛ける最小の高さとなる。
         そのため、ヒストグラムそれぞれの高さを基準とし、
         それの前の最も近い小さい値 (Nearest Smaller to Left: NSL) がある位置と、
@@ -26,6 +26,8 @@ class Solution:
 
         #Stack
         #MonotonicStack
+        #NSL
+        #NSR
 
         Time complexity: O(n)
         Space complexity: O(n)

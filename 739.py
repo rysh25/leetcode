@@ -20,6 +20,7 @@ class Solution:
 
         #Stack
         #MonotonicStack
+        #NGR
 
         Args:
             temperatures (list[int]): 各日の気温からなるの整数配列を渡します。
