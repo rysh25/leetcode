@@ -1,3 +1,6 @@
+from collections import defaultdict
+
+
 class Solution:
     def restoreArray(self, adjacentPairs: list[list[int]]) -> list[int]:
         """
@@ -27,41 +30,24 @@ class Solution:
         Returns:
             list[int]: 元の配列 nums を返します。
         """
-        n = len(adjacentPairs) + 1
-        G: list[list[int]] = [[] for _ in range(n)]
+        G: defaultdict[int, list[int]] = defaultdict(list)
 
-        d: dict[int, int] = {}
-        dr: dict[int, int] = {}
-        i = 0
         for pair in adjacentPairs:
-            p0v = 0
-            p1v = 0
-            if pair[0] not in d:
-                d[pair[0]] = i
-                dr[i] = pair[0]
-                i += 1
-            if pair[1] not in d:
-                d[pair[1]] = i
-                dr[i] = pair[1]
-                i += 1
-
-            p0v = d[pair[0]]
-            p1v = d[pair[1]]
-            G[p0v].append((p1v))
-            G[p1v].append((p0v))
+            G[pair[0]].append((pair[1]))
+            G[pair[1]].append((pair[0]))
         # print(f"G={G}")
         # print(f"d={d}", f"dr={dr}")
-        start_v = -1
-        for i in range(len(G)):
-            if len(G[i]) == 1:
-                start_v = i
+        start_k = -1
+        for k in G:
+            if len(G[k]) == 1:
+                start_k = k
 
-        seen: list[int] = [False] * n
+        seen: defaultdict[int, bool] = defaultdict(bool)
 
         ans: list[int] = []
 
         def dfs(v: int):
-            ans.append(dr[v])
+            ans.append(v)
             seen[v] = True
 
             for nv in G[v]:
@@ -71,7 +57,7 @@ class Solution:
 
         # print(f"start_v={start_v}, dr[start_v]={dr[start_v]}")
 
-        dfs(start_v)
+        dfs(start_k)
 
         return ans
 
@@ -79,4 +65,5 @@ class Solution:
 sol = Solution()
 print(sol.restoreArray(adjacentPairs=[[2, 1], [3, 4], [3, 2]]))
 print(sol.restoreArray(adjacentPairs=[[4, -2], [1, 4], [-3, 1]]))
+print(sol.restoreArray(adjacentPairs=[[100000, -100000]]))
 print(sol.restoreArray(adjacentPairs=[[100000, -100000]]))
