@@ -1,6 +1,3 @@
-from collections import defaultdict, deque
-
-
 class Solution:
     def numBusesToDestination(
         self, routes: list[list[int]], source: int, target: int
@@ -15,6 +12,19 @@ class Solution:
         ソースからターゲットまで移動するために乗らなければならないバスの最小数を返します。
         不可能な場合は -1 を返します。
 
+
+        バス停分の最小の乗車回数を保持するリストを用意する。
+        まず、source のバス停を0に設定する
+
+        次にルート単位に次の処理を行う。
+        1. そのルート内のバス停までの乗車回数の最小値を取得する。
+        2. そのルート内のバス停を、上で取得したバス停と同じルートに存在すると判断し、最小乗車回数がより大きいなら最小値+1で更新する。
+        すべてのルートが更新ができなくなるまで繰り返す。
+
+
+        - Time complexity: O(numberOfRoutes * numberOfStops)
+        - Space complexity: O(maxStop)
+
         #Graph
 
         Args:
@@ -25,67 +35,31 @@ class Solution:
         Returns:
             int: ソースからターゲットまで移動するために乗らなければならないバスの最小数を返します。
         """
-        num_routes = len(routes)
-        G: list[set[int]] = [set() for _ in range(num_routes)]
-        stop_route_map: defaultdict[int, set[int]] = defaultdict(set)
-        source_routes: set[int] = set()
-        target_routes: set[int] = set()
-
         if source == target:
             return 0
 
-        for i, route in enumerate(routes):
-            for bus in route:
-                stop_route_map[bus].add(i)
-                if bus == source:
-                    source_routes.add(i)
-                if bus == target:
-                    target_routes.add(i)
-
-        # print(f"stop_route_map: {stop_route_map}")
-
-        for i, route in enumerate(routes):
-            for bus in route:
-                for j in stop_route_map[bus]:
-                    if i == j:
-                        continue
-                    G[i].add(j)
-                    G[j].add(i)
-        # print(f"G: {G}")
-        # print(f"source_routes: {source_routes}")
-        # print(f"target_routes: {target_routes}")
+        max_stop = max(max(route) for route in routes)
+        if max_stop < target:
+            return -1
 
         INF = 10**9 + 1
+        min_buses_to_reach = [INF] * (max_stop + 1)
+        min_buses_to_reach[source] = 0
 
-        def bfs(v: int) -> int:
-            seen = [False] * num_routes
-            # print(f"call bfs: s={s}")
+        updated = True
+        while updated:
+            updated = False
+            for route in routes:
+                mini = INF
+                for stop in route:
+                    mini = min(mini, min_buses_to_reach[stop])
+                mini += 1
+                for stop in route:
+                    if min_buses_to_reach[stop] > mini:
+                        min_buses_to_reach[stop] = mini
+                        updated = True
 
-            q: deque[tuple[int, int]] = deque()
-            q.append((v, 1))
-
-            ret = INF
-
-            while q:
-                cv, n = q.pop()
-                # print(f"cv={cv}, n={n}")
-
-                if cv in target_routes:
-                    ret = min(ret, n)
-
-                seen[cv] = True
-
-                for nv in G[cv]:
-                    if seen[nv]:
-                        continue
-                    q.append((nv, n + 1))
-            return ret
-
-        ans = INF
-        for s in source_routes:
-            ans = min(ans, bfs(s))
-
-        return ans if ans < INF else -1
+        return min_buses_to_reach[target] if min_buses_to_reach[target] < INF else -1
 
 
 sol = Solution()
