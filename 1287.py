@@ -16,7 +16,7 @@ class Solution:
         Returns:
             int: 25% を超える確率で出現する整数を返します。
         """
-        threshold = len(arr) * 0.25
+        threshold = len(arr) // 4
         freq: defaultdict[int, int] = defaultdict(int)
         for i in arr:
             freq[i] += 1
