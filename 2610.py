@@ -1,21 +1,15 @@
 class Solution:
     def findMatrix(self, nums: list[int]) -> list[list[int]]:
         ans: list[list[int]] = []
-        current_row: set[int] = set()
-        used_index: set[int] = set()
+        freq: list[int] = [0] * (len(nums) + 1)
 
-        while True:
-            i = 0
-            current_row = set()
-            while i < len(nums):
-                if i not in used_index and nums[i] not in current_row:
-                    current_row.add(nums[i])
-                    used_index.add(i)
-                i += 1
-            ans.append(list(current_row))
+        for i in nums:
+            if freq[i] >= len(ans):
+                ans.append([])
 
-            if len(used_index) == len(nums):
-                break
+            ans[freq[i]].append(i)
+            freq[i] += 1
+
         return ans
 
 
