@@ -4,7 +4,8 @@ class Solution:
         与えられた整数配列numsについて、最長増加部分列の長さを返します。
 
 
-        DP を行い lis 配列に最長増加部分列を作成する。
+        DP を行い lis 配列に最長増加部分列計算用の配列を作成していく。
+        (最長を計算するためのもので最終的に実際の最長増加部分列が完成するわけではない)
         事前に nums と同じ長さの lis 配列を inf で初期化し用意する。
         nums 配列の順番に処理しながら lis 配列を作成する
         nums[i] を処理する際に、i-1 まで処理する際に作成した lis 配列から、lower bound を二分探索で検索する。
@@ -34,13 +35,14 @@ class Solution:
                 else:
                     l = m
             lis[r] = x
-            # print(f"lis={lis}")
+            print(f"lis={lis}")
             ans = max(r + 1, ans)
-        # print(f"lis={lis}")
+        print(f"lis={lis}")
         return ans
 
 
 sol = Solution()
-print(sol.lengthOfLIS(nums=[10, 9, 2, 5, 3, 7, 101, 18]))
-print(sol.lengthOfLIS(nums=[0, 1, 0, 3, 2, 3]))
-print(sol.lengthOfLIS(nums=[7, 7, 7, 7, 7, 7, 7]))
+# print(sol.lengthOfLIS(nums=[10, 9, 2, 5, 3, 7, 101, 18]))
+# print(sol.lengthOfLIS(nums=[0, 1, 0, 3, 2, 3]))
+# print(sol.lengthOfLIS(nums=[7, 7, 7, 7, 7, 7, 7]))
+print(sol.lengthOfLIS(nums=[1, 5, 6, 3, 10, 4]))
