@@ -77,7 +77,7 @@ class Solution_BFS:
         BFS ですべてのノードを訪問し、指定の範囲内であれば、値を合計値に足します。
 
         - Time complexity: O(n)
-        - Space complexity: O(n)
+        - Space complexity: O(h) * h is the height of the tree.
 
         n は二分探索木のノード数を表します。
 
