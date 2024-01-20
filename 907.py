@@ -4,43 +4,52 @@ class Solution:
         整数の配列から、その全ての連続部分列 (subarray) の最小値の合計を計算します。
         その結果を10^9+7を法として返します。
 
-        全ての連続部分列を生成し、全探索する場合、O(N^2) となり間に合いません。
-        部分列の最小値を求めるて合計を計算する代わりに、各値を基準として、最小となる部分列の数を求めます。
 
-        配列最初からループする。この値が基準として、この値が含まれる連続部分列の個数を求めていきます。
-        最小部分列の数は、単調減少スタック (Monotonic Decreasing Stack) を使用して求めます。
+        全ての連続部分列を生成し、全探索する場合、O(N^2) となり間に合わない。
+        部分列の最小値を求めるて合計を計算する代わりに、各値を基準として、最小となる部分配列の数を求る。
+        各値を基準として、最小となる部分配列の数は、「その値をより右の小さい値の手前までの個数」*「その値より左の小さい値の手前までの個数」となる。
+
+        単調減少スタック (Monotonic Decreasing Stack) を使用して、
+        配列の「その値をより右の小さい値の手前までインデックス」と「その値より左の小さい値の手前までのインデックス」を求め、それぞれ、left 配列、right 配列に入れる。
+
+        - Time complexity: O(n)
+        - Space complexity: O(n)
 
         #Stack
         #MonotonicStack
 
         Args:
-            heights (list[int]): ヒストグラムのバーの高さからなる整数の配列を渡します。
+            arr (list[int]): 整数の配列
 
         Returns:
-            int: ヒストグラムの最大の面積を返します。
+            int: 整数の配列から、その全ての連続部分列 (subarray) の最小値の合計を計算します。その結果を10^9+7を法として返します。
         """
-
+        print(f"arr={arr}")
+        n = len(arr)
         MOD = 10**9 + 7
-        stack: list[tuple[int, int]] = []  # (value, count)
-        res = 0
-        prevsum = 0
+        left: list[int] = [0] * n
+        right: list[int] = [n - 1] * n
+        st: list[tuple[int, int]] = []  # (value, index)
 
-        for value in arr:
-            print(f"value={value}")
-            count = 1
-            while stack and stack[-1][0] >= value:
-                v, c = stack.pop()
-                print(f"v={v}, c={c}")
-                count += c
-                prevsum -= v * c
-            stack.append((value, count))
-            print(f"push: value={value}, count={count}, prevsum={prevsum}")
-            prevsum += value * count
-            res += prevsum
+        for i in range(n):
+            while st and st[-1][0] >= arr[i]:
+                _, si = st.pop()
+                right[si] = i - 1
 
-        return res % MOD
+            if st:
+                left[i] = st[-1][1] + 1
+            st.append((arr[i], i))
+
+        # print(f"left={left}, right={right}")
+
+        ans = 0
+
+        for i in range(n):
+            ans += arr[i] * (i - left[i] + 1) * (right[i] - i + 1) % MOD
+
+        return ans % MOD
 
 
 sol = Solution()
 print(sol.sumSubarrayMins(arr=[3, 1, 2, 4]))
-# print(sol.sumSubarrayMins(arr=[11, 81, 94, 43, 3]))
+print(sol.sumSubarrayMins(arr=[11, 81, 94, 43, 3]))
