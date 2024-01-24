@@ -3,6 +3,10 @@ class Solution:
         """
         2つの文字列 text1 と text2 が渡される。
         最も長い共通部分列の長さを返す。
+        
+        
+        DP を行う。
+        dp[i][j]には、text1[i-1]とtext2[j-1]までの中で最大の部分文字列の長さを格納する。
 
         - Time complexity: O(nm)
         - Space complexity: O(nm)

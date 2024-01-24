@@ -84,6 +84,9 @@ class Solution:
         
         - Time complexity: O(n)
         - Space complexity: O(h)
+        
+        #DFS
+        #BinaryTree
 
         Args:
             root (TreeNode | None): ノード値が 1 から 9 までの数字である二分木
