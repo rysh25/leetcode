@@ -26,15 +26,15 @@ class Solution:
         def backtrack(i: int = 0):
             if i >= len(nums):
                 ans.append(s.copy())
-                print(f"i >= len(nums): s={s}")
+                # print(f"i >= len(nums): s={s}")
                 return
 
             s.append(nums[i])
-            print(f"Push: i={i}, nums[i]={nums[i]}")
+            # print(f"Push: i={i}, nums[i]={nums[i]}")
             backtrack(i + 1)
 
             s.pop()
-            print(f"Pop: i={i}, nums[i]={nums[i]}")
+            # print(f"Pop: i={i}, nums[i]={nums[i]}")
             backtrack(i + 1)
 
         backtrack(0)
