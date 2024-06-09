@@ -17,6 +17,7 @@ class Solution:
         - Space complexity: O(n)
 
         #Math
+        #PrefixSum
 
         Args:
             nums (list[int]): 整数配列
