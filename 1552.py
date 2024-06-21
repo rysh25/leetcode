@@ -42,12 +42,12 @@ class Solution:
                     balls += 1
 
             # print(f"mid={mid}, balls={balls}, m={m}")
-            if balls < m:
+            if balls >= m:
                 r = mid
             else:
                 l = mid
 
-        return l
+        return r
 
 
 sol = Solution()
