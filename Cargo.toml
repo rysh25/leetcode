@@ -1,0 +1,9 @@
+[package]
+edition = "2021"
+name = "leetcode"
+version = "1.0.0"
+
+[lib]
+path = "lib.rs"
+
+[dependencies]
