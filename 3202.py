@@ -8,6 +8,9 @@ class Solution:
 
         nums の最長の有効な部分列の長さを返します。
 
+
+        kまでのあまりごとに dp テーブルを作成し、dp[i] には、あまりが i の数値で終わる部分列の長さのが入ります。
+
         - Time complexity: O(n * k)
         - Space complexity: O(k)
 
