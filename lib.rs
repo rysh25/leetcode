@@ -10,5 +10,6 @@ pub mod s1791;
 pub mod s2058;
 pub mod s2192;
 pub mod s2285;
+pub mod s2582;
 pub mod s350;
 pub mod s995;
