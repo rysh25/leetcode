@@ -12,6 +12,7 @@ pub mod s1717;
 pub mod s1791;
 pub mod s1823;
 pub mod s2058;
+pub mod s2096;
 pub mod s2192;
 pub mod s2196;
 pub mod s2285;
