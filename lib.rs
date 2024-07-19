@@ -5,6 +5,7 @@ pub mod s1382;
 pub mod s1438;
 pub mod s1509;
 pub mod s1518;
+pub mod s1530;
 pub mod s1550;
 pub mod s1579;
 pub mod s1598;
