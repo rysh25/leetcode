@@ -35,6 +35,7 @@ pub mod s2582;
 pub mod s2678;
 pub mod s3217;
 pub mod s350;
+pub mod s725;
 pub mod s726;
 pub mod s874;
 pub mod s995;
