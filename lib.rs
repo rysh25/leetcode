@@ -15,6 +15,7 @@ pub mod s1579;
 pub mod s1598;
 pub mod s1605;
 pub mod s1636;
+pub mod s1684;
 pub mod s1701;
 pub mod s1717;
 pub mod s1791;
