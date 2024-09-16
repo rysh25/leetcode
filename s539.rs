@@ -18,27 +18,9 @@ impl Solution {
             let hour: i32 = (&time_points[(i + 1) % n])[0..2].parse().unwrap();
             let minute: i32 = (&time_points[(i + 1) % n])[3..5].parse().unwrap();
 
-            let mut diff_min = minute - prev_min;
-            let mut diff_hour = (24 + hour - prev_hour) % 24;
+            let diff = (24 * 60 + hour * 60 + minute - prev_hour * 60 - prev_min) % (24 * 60);
 
-            println!(
-                "hour={:?}, minute={:?}, prev_hour={:?}, prev_min={:?}",
-                hour, minute, prev_hour, prev_min
-            );
-
-            println!(
-                "i={:?}, diff_hour={:?}, diff_min={:?}",
-                i, diff_hour, diff_min
-            );
-
-            if diff_min < 0 {
-                diff_min += 60;
-                diff_hour -= 1;
-
-                diff_hour = (diff_hour + 24) % 24;
-            }
-
-            ans = min(ans, diff_hour * 60 + diff_min);
+            ans = min(ans, diff);
 
             prev_hour = hour;
             prev_min = minute;
