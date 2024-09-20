@@ -37,6 +37,7 @@ pub mod s2220;
 pub mod s2285;
 pub mod s2326;
 pub mod s2392;
+pub mod s241;
 pub mod s2418;
 pub mod s2419;
 pub mod s2582;
