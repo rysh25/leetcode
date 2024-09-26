@@ -53,6 +53,7 @@ pub mod s386;
 pub mod s539;
 pub mod s725;
 pub mod s726;
+pub mod s729;
 pub mod s874;
 pub mod s884;
 pub mod s995;
